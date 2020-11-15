@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artilugios Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Patua+One&family=Righteous&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="js/db.js"></script>
+    <script defer src="js/script.js"></script>
+</head>
+<body>
+    
+    <header class="encabezado">
+        <div class="encabezado encabezado__logo">
+        <h1 class="encabezado encabezado__logo encabezado__logo--logo">Artilugios Store</h1>
+
+        <div id="#boton_canasto" class="encabezado encabezado__logo encabezado__logo--canasto">
+            <div class="encabezado encabezado__logo encabezado__logo--burbuja">
+            </div>
+        </div>
+        </div>
+        <div id="mi_canasto" class="encabezado encabezado__micanasto">
+            <h2>Mi canasto</h2>
+            <div class="encabezado encabezado__compra">
+            </div>
+            <div class="encabezado encabezado__micanasto--finalizar">
+                <span class="encabezado encabezado__micanasto--preciototal"></span>
+                <button id="finaliza_compra" onclick="LimpiaCanasto(miCanasto)">Finalizar compra</button>
+            </div>
+
+
+        </div>
+
+
+        <ul>
+            <li>Audio</li>
+            <li>Cargadores</li>
+            <li>Cables</li>
+            <li>Memorias</li>
+            <li>Imagen</li>
+            <li>Redes</li>
+        </ul>
+    </header>
+    <section class="destacados">
+        <h2>Destacados</h2>
+        <div id="contenedor__productos" class="contenedor">
+            
+        </div>
+
+    </section>
+</body>
+</html>
