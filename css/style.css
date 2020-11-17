@@ -1,64 +1,46 @@
 /*font-family: 'Righteous', cursive;
 font-family: 'Patua One', cursive;
 font-family: 'Roboto', sans-serif;*/
-
 body {
-    background-color: #fea680;
-    font-family: 'Patua One', cursive;
-}
+  background-color: #fea680;
+  font-family: 'Patua One', cursive; }
 
-.encabezado .encabezado__logo{
-    background-color: #01abaa;
-}
-h1 {
-    color: #FDEAC6;
-    font-family: 'Righteous', cursive;
-    text-transform: uppercase;
-}
-
-.encabezado .encabezado__logo .encabezado__logo--canasto {
-    background-image: url('../assets/canasto.png');
+.encabezado .encabezado__logo {
+  background-color: #01abaa; }
+  .encabezado .encabezado__logo .encabezado__logo--canasto {
+    background-image: url("../assets/canasto.png");
     background-size: cover;
     background-position: center;
     height: 45.42px;
-    width: 51px;
-}
-
-.encabezado .encabezado__logo .encabezado__logo--burbuja{
+    width: 51px; }
+  .encabezado .encabezado__logo .encabezado__logo--burbuja {
     background-color: #FEDC3D;
     border-radius: 9px;
-    
     text-align: center;
-
     height: 18px;
-    width:18px
-}
+    width: 18px; }
 
 .encabezado .encabezado__micanasto {
-    background-color: #FEDC3D;
-}
+  background-color: #FEDC3D; }
 
 .encabezado .encabezado__compra {
-    border-top: #000000 5px solid;
-    border-bottom: #000000 5px solid;
-}
+  border-top: #000000 5px solid;
+  border-bottom: #000000 5px solid; }
 
 .encabezado .encabezado__producto img {
-    height: 51px;
-    width: 82px;
+  height: 51px;
+  width: 82px; }
 
-}
+h1 {
+  color: #FDEAC6;
+  font-family: 'Righteous', cursive;
+  text-transform: uppercase; }
 
 .producto {
-    background-color: #01abaa;
-    height: 346.49px;
-    width: 319.1px;
-
-}
-
-.producto img {
-
+  background-color: #01abaa;
+  height: 346.49px;
+  width: 319.1px; }
+  .producto img {
     border-radius: 3px;
     height: 200px;
-    width: 319.1px;
-}
+    width: 319.1px; }

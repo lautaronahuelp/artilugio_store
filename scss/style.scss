@@ -1,0 +1,56 @@
+/*font-family: 'Righteous', cursive;
+font-family: 'Patua One', cursive;
+font-family: 'Roboto', sans-serif;*/
+@import 'colors';
+
+body {
+	background-color:$puce;
+	font-family: 'Patua One', cursive;
+}
+.encabezado {
+	.encabezado__logo {
+		background-color: $azul;
+		.encabezado__logo--canasto {
+			background-image: url('../assets/canasto.png');
+			background-size: cover;
+			background-position: center;
+			height: 45.42px;
+			width: 51px;
+		}
+		.encabezado__logo--burbuja {
+			background-color: $amarillo;
+			border-radius: 9px;
+			text-align: center;
+			height: 18px;
+			width: 18px;
+		}
+	}
+	.encabezado__micanasto {
+		background-color: $amarillo;
+	}
+	.encabezado__compra {
+		border-top: $negro 5px solid;
+		border-bottom: $negro 5px solid;
+	}
+	.encabezado__producto {
+		img {
+			height: 51px;
+			width: 82px;
+		}
+	}
+}
+h1 {
+	color: $hueso;
+	font-family: 'Righteous', cursive;
+	text-transform: uppercase;
+}
+.producto {
+	background-color: $azul;
+	height: 346.49px;
+	width: 319.1px;
+	img {
+		border-radius: 3px;
+		height: 200px;
+		width: 319.1px;
+	}
+}

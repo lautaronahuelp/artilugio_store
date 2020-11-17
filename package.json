@@ -1,0 +1,33 @@
+{
+  "name": "artilugio",
+  "version": "1.0.0",
+  "description": "Tienda online. Proyecto para el curso de Javascript de Coderhouse",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-css":"node-sass --include-path scss scss/style.scss css/style.css",
+    "watch-css":"nodemon -e scss -x \"npm run build-css\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lautaronahuelp/artilugio_store.git"
+  },
+  "keywords": [
+    "store",
+    "carrito",
+    "canasto",
+    "javascript",
+    "tienda",
+    "ppo"
+  ],
+  "author": "Lautaro Nahuel P.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lautaronahuelp/artilugio_store/issues"
+  },
+  "homepage": "https://github.com/lautaronahuelp/artilugio_store#readme",
+  "devDependencies": {
+    "node-sass": "^5.0.0",
+    "nodemon": "^2.0.6"
+  }
+}
