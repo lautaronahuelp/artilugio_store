@@ -143,3 +143,8 @@ for (prod of productos) {
 let boton_limpia = document.getElementById('finaliza_compra');
 
 boton_limpia.addEventListener('click', miCanasto.LimpiaCanasto);
+
+//Interacciones y efectos con JQUERY
+$("#boton_canasto").click(function(){
+  $("#mi_canasto").fadeToggle();
+});

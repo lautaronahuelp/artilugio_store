@@ -37,7 +37,11 @@ body {
 			height: 51px;
 			width: 82px;
 		}
-	}
+    }
+    
+    #mi_canasto {
+        display: none;
+    }
 }
 h1 {
 	color: $hueso;

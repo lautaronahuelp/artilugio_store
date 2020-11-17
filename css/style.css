@@ -31,6 +31,9 @@ body {
   height: 51px;
   width: 82px; }
 
+.encabezado #mi_canasto {
+  display: none; }
+
 h1 {
   color: #FDEAC6;
   font-family: 'Righteous', cursive;
