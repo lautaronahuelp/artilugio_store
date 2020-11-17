@@ -1,11 +1,14 @@
+var self; //**correccion para que metodo Canasta.LimpiaCanasto funcione ok (el addEventListener hacía que el this fuera el objeto html button) scope superior.
+
 class Canasta{
-    
+
   constructor(id){
+    self = this; //**se asigna this a self para correccion
     this.id = id;
     this.compra = [];
     this.preciototal = 0;
   }
-
+  
   EliminarDeCanasta(pos){
     this.preciototal -= this.compra[pos].precio;
     this.compra.splice(pos, 1);
@@ -14,9 +17,13 @@ class Canasta{
   }
 
   LimpiaCanasto(){
-    this.compra = [];
+    //***se usa el self creado anteriormente en lugar de this
+    self.compra = [];
+    self.preciototal = 0;
     localStorage.removeItem('canasto');
-    this.RenderearCanasto(0);
+    self.RenderearCanasto(0);
+    
+
   
   }
   PersistirCanasta(){
@@ -33,17 +40,11 @@ class Canasta{
   RecuperaCanasta(canastaLocal){
     let prod;
     let canastaLocalParseada = JSON.parse(canastaLocal);
-
-    console.log(this.compra);
-
-    console.log(canastaLocalParseada.compra);
-
-   
-      this.preciototal = canastaLocalParseada.preciototal;
-      for(prod of canastaLocalParseada.compra){
-        this.compra.push(prod);
-        this.PersistirCanasta();
-      }
+    this.preciototal = canastaLocalParseada.preciototal;
+    for(prod of canastaLocalParseada.compra){
+      this.compra.push(prod);
+      this.PersistirCanasta();
+    }
   
 
   }
@@ -92,13 +93,9 @@ class Canasta{
     
   }
   
-
-  
-
-  
-  
-  
 }
+
+
 let DATABASE = new DataBase;
 let productos = DATABASE.getProducts();
 var miCanasto = new Canasta(1);
@@ -143,13 +140,6 @@ for (prod of productos) {
     document.getElementById('contenedor__productos').appendChild(tarjetaProd);
 }
 
-console.log(miCanasto);
+let boton_limpia = document.getElementById('finaliza_compra');
 
-
-function LimpiaCanasto(canasto){
-  canasto.compra = [];
-  canasto.preciototal = 0;
-  localStorage.removeItem('canasto');
-  canasto.RenderearCanasto(0);
-
-}
+boton_limpia.addEventListener('click', miCanasto.LimpiaCanasto);
