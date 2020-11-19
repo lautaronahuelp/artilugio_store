@@ -97,7 +97,7 @@ class Canasta{
 
 
 let DATABASE = new DataBase;
-let productos = DATABASE.getProducts();
+DATABASE.getProducts();
 var miCanasto = new Canasta(1);
 
 //RECUPERO LO QUE ESTE GUARDADO EN EL LOCALSTORAGE
@@ -106,42 +106,44 @@ var miCanasto = new Canasta(1);
 miCanasto.RenderearCanasto(1);
 
 //GENERA PRODUCTOS DESTACADOS HTML
-for (prod of productos) {
-    var tarjetaProd = document.createElement('div');
-    tarjetaProd.id = prod['id'];
-    tarjetaProd.classList.add('producto');
+function RenderearCatalogo(productos){
+  for (prod of productos) {
+      var tarjetaProd = document.createElement('div');
+      tarjetaProd.id = prod['id'];
+      tarjetaProd.classList.add('producto');
 
-    tarjetaProd.innerHTML = `<h4>${prod['nombre']}</h4>
-    <img src="productos/${prod['picture']}.jpg" alt="">
-    <div class="producto__categoria">
-        <span>${prod['categoria']}</span>
-    </div>
-    <div class="producto__precio">
-        <span>$${prod['precio']}</span>
-    </div>
-    `;
+      tarjetaProd.innerHTML = `<h4>${prod['nombre']}</h4>
+      <img src="productos/${prod['picture']}.jpg" alt="">
+      <div class="producto__categoria">
+          <span>${prod['categoria']}</span>
+      </div>
+      <div class="producto__precio">
+          <span>$${prod['precio']}</span>
+      </div>
+      `;
 
-    let boton = document.createElement('button');
-    boton.classList.add('agregar_al_canasto');
-    boton.innerHTML = 'Agregar a mi canasto';
-    tarjetaProd.appendChild(boton);
-    boton.addEventListener('click', (e) => {
+      let boton = document.createElement('button');
+      boton.classList.add('agregar_al_canasto');
+      boton.innerHTML = 'Agregar a mi canasto';
+      tarjetaProd.appendChild(boton);
+      boton.addEventListener('click', (e) => {
 
-      let producto = productos.find(producto => {
-        return producto.id == e.target.parentNode.id;
+        let producto = productos.find(producto => {
+          return producto.id == e.target.parentNode.id;
+        })
+
+        producto.AgregarAlCarrito(miCanasto, 1);
+        miCanasto.RenderearCanasto(0);
+
       })
 
-      producto.AgregarAlCarrito(miCanasto, 1);
-      miCanasto.RenderearCanasto(0);
-      
-    })
 
-
-    document.getElementById('contenedor__productos').appendChild(tarjetaProd);
+      document.getElementById('contenedor__productos').appendChild(tarjetaProd);
+  }
 }
 
+//FUNCION LIMPIA CANASTO QUE SE VA A CONVERTIR EN FINALIZAR COMPRA
 let boton_limpia = document.getElementById('finaliza_compra');
-
 boton_limpia.addEventListener('click', miCanasto.LimpiaCanasto);
 
 //Interacciones y efectos con JQUERY
