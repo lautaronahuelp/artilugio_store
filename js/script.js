@@ -6,12 +6,34 @@ class Canasta{
     self = this; //**se asigna this a self para correccion
     this.id = id;
     this.compra = [];
+    this.cantidad_productos = 0;
     this.preciototal = 0;
   }
+
+  CantidadProductos(){
+    let cantidad = 0;
+    for (let producto of this.compra){
+      cantidad += producto.cantidad;
+      
+    }
+
+    this.cantidad_productos = cantidad;
+  }
   
-  EliminarDeCanasta(pos){
-    this.preciototal -= this.compra[pos].precio;
-    this.compra.splice(pos, 1);
+  EliminarDeCanasta(id){
+    let indice_prod = this.compra.findIndex(producto => producto.id == id);
+
+    if(typeof this.compra.find(producto => producto.id == id && producto.cantidad > 1) !== 'undefined'){
+      //Obtengo el precio de una unidad dividiendo el precio total del producto por la cantidad.
+      this.compra[indice_prod].precio -= (this.compra[indice_prod].precio) / (this.compra[indice_prod].cantidad);
+      this.compra[indice_prod].cantidad -= 1;
+      
+    } else {
+      this.compra.splice(indice_prod, 1);
+    }
+    
+    this.PrecioTotal();
+    this.CantidadProductos()
     this.PersistirCanasta();
     this.RenderearCanasto(0);
   }
@@ -22,25 +44,44 @@ class Canasta{
     self.preciototal = 0;
     localStorage.removeItem('canasto');
     self.RenderearCanasto(0);
-    
-
-  
   }
+
   PersistirCanasta(){
-    let paquete = {id : this.id, compra : this.compra, preciototal : this.preciototal};
+    let paquete = {id : this.id, compra : this.compra, preciototal : this.preciototal, cantidad : this.cantidad_productos};
     localStorage.setItem('canasto', JSON.stringify(paquete));
   }
   
+  PrecioTotal(){
+    let precio_total_met = 0;
+    for (let pr of this.compra) {
+      precio_total_met += pr.precio;
+    }
+
+    this.preciototal = precio_total_met;
+  }
+
   RecibeCarrito(compra) {
-    this.compra.push(compra);
-    this.preciototal += compra.precio;
+    
+    
+    if (typeof this.compra.find(producto => producto.id == compra.id) !== 'undefined'){
+      let indice = this.compra.findIndex(producto => producto.id == compra.id);
+      this.compra[indice].cantidad += 1;
+      this.compra[indice].precio += compra.precio;
+    } else {
+      this.compra.push(compra);
+    }
+    this.PrecioTotal();
+    this.CantidadProductos()
+    this.RenderearCanasto(0);
     this.PersistirCanasta();
+
   }
 
   RecuperaCanasta(canastaLocal){
     let prod;
     let canastaLocalParseada = JSON.parse(canastaLocal);
     this.preciototal = canastaLocalParseada.preciototal;
+    this.cantidad_productos = canastaLocalParseada.cantidad;
     for(prod of canastaLocalParseada.compra){
       this.compra.push(prod);
       this.PersistirCanasta();
@@ -63,12 +104,12 @@ class Canasta{
 
     for (prod of this.compra) {
       let tarjetaCanasteado = document.createElement('div');
-      tarjetaCanasteado.id = idEnCanasto;
+      tarjetaCanasteado.id = prod['id'];
       tarjetaCanasteado.classList.add('encabezado');
       tarjetaCanasteado.classList.add('encabezado__producto');
   
       tarjetaCanasteado.innerHTML = `<img src="productos/${prod['picture']}.jpg" alt="">
-      <span>${prod['nombre']}</span>
+      <span>${prod['nombre']}</span><span> x${prod['cantidad']}</span>
       `;
   
     
@@ -79,8 +120,8 @@ class Canasta{
       tarjetaCanasteado.appendChild(boton_del);
   
         boton_del.addEventListener('click', (e) => {
-          let posicionEnArrayCompra = (e.target.parentNode.id) - 1;
-          this.EliminarDeCanasta(posicionEnArrayCompra);
+          let id = e.target.parentNode.id;//uso el atributo id de html para almacenar id
+          this.EliminarDeCanasta(id);
         
         })
   
@@ -122,10 +163,14 @@ function RenderearCatalogo(productos){
       </div>
       `;
 
+      let caja = document.createElement('div');
+      caja.classList.add('compra_estado');
+      caja.id = prod['id'];
+
       let boton = document.createElement('button');
       boton.classList.add('agregar_al_canasto');
       boton.innerHTML = 'Agregar a mi canasto';
-      tarjetaProd.appendChild(boton);
+      caja.appendChild(boton);
       boton.addEventListener('click', (e) => {
 
         let producto = productos.find(producto => {
@@ -133,9 +178,14 @@ function RenderearCatalogo(productos){
         })
 
         producto.AgregarAlCarrito(miCanasto, 1);
-        miCanasto.RenderearCanasto(0);
 
+        let comprado = document.createElement('span')
+        comprado.innerHTML = 'Se agregó al canasto!'
+        caja.appendChild(comprado);
+        
       })
+
+      tarjetaProd.appendChild(caja);
 
 
       document.getElementById('contenedor__productos').appendChild(tarjetaProd);
