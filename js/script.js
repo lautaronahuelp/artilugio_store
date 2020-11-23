@@ -18,6 +18,7 @@ class Canasta{
     }
 
     this.cantidad_productos = cantidad;
+    return cantidad;
   }
   
   EliminarDeCanasta(id){
@@ -98,13 +99,10 @@ class Canasta{
     }
     //limpia el html cada vez que se genera el canasto
     document.getElementsByClassName('encabezado__compra')[0].innerHTML = ``;
-
-    let idEnCanasto = 1;
-    let prod;
-
-    for (prod of this.compra) {
+  
+    for (let prod of this.compra) {
       let tarjetaCanasteado = document.createElement('div');
-      tarjetaCanasteado.id = prod['id'];
+      tarjetaCanasteado.id = `slotCanasto-${prod['id']}`;
       tarjetaCanasteado.classList.add('encabezado');
       tarjetaCanasteado.classList.add('encabezado__producto');
   
@@ -118,18 +116,19 @@ class Canasta{
       boton_del.classList.add('eliminar_del_canasto');
       boton_del.innerHTML = 'X';
       tarjetaCanasteado.appendChild(boton_del);
-  
         boton_del.addEventListener('click', (e) => {
-          let id = e.target.parentNode.id;//uso el atributo id de html para almacenar id
+          /*let id = e.target.parentNode.id;//uso el atributo id de html para almacenar id
+          id = id.slice(12);
+          id = parseInt(id, 10);*/
+          let id = prod['id'];
           this.EliminarDeCanasta(id);
         
         })
   
       document.getElementsByClassName('encabezado__compra')[0].appendChild(tarjetaCanasteado);
-      idEnCanasto += 1;
     }
     
-    document.getElementsByClassName('encabezado__logo--burbuja')[0].innerHTML = this.compra.length;
+    document.getElementsByClassName('encabezado__logo--burbuja')[0].innerHTML = this.CantidadProductos();
     document.getElementsByClassName('encabezado__micanasto--preciototal')[0].innerHTML = '$' + this.preciototal;
     
   }
