@@ -6,27 +6,67 @@ font-family: 'Roboto', sans-serif;*/
 body {
 	background-color:$puce;
 	font-family: 'Patua One', cursive;
+	margin: 0;
+	padding: 0;
 }
 .encabezado {
 	.encabezado__logo {
 		background-color: $azul;
+		display: flex;
+		justify-content: space-between;
+		margin: 0px;
+		padding: 10px;
 		.encabezado__logo--canasto {
 			background-image: url('../assets/canasto.png');
 			background-size: cover;
 			background-position: center;
+			display: inline-block;
 			height: 45.42px;
+			margin: 10px 10px;
+			padding: 0px;
 			width: 51px;
 		}
 		.encabezado__logo--burbuja {
 			background-color: $amarillo;
 			border-radius: 9px;
-			text-align: center;
+			display: block;
+			font-weight: bold;
 			height: 18px;
+			margin-left: 33px;
+			padding: 0px;
+			position: relative;
+			text-align: center;
 			width: 18px;
+		}
+	}
+	.encabezado__menu {
+		background-color: $amarillo;
+		font-size: 27px;
+		overflow-x: scroll;
+		
+		/*empieza hide scrollbars*/
+		&::-webkit-scrollbar {/* hide scrollbar chrome safari*/
+			display: none;
+		}		
+		-ms-overflow-style: none;  /* IE and Edge */
+		scrollbar-width: none;  /* Firefox */
+		/*termina hide scrollbars*/
+		
+
+		ul.encabezado__menu--lista {
+			list-style-type: none;
+			overflow: hidden;
+			width: 800px;
+
+			li{
+				display: inline-block;
+				margin-left: 27px;
+			}
 		}
 	}
 	.encabezado__micanasto {
 		background-color: $amarillo;
+		margin-top: -20px;
 	}
 	.encabezado__compra {
 		border-top: $negro 5px solid;
@@ -45,6 +85,7 @@ body {
 }
 h1 {
 	color: $hueso;
+	display: inline-block;
 	font-family: 'Righteous', cursive;
 	text-transform: uppercase;
 }

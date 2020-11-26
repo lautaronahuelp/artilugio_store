@@ -102,28 +102,42 @@ class Canasta{
   
     for (let prod of this.compra) {
       let tarjetaCanasteado = document.createElement('div');
-      tarjetaCanasteado.id = `slotCanasto-${prod['id']}`;
       tarjetaCanasteado.classList.add('encabezado');
       tarjetaCanasteado.classList.add('encabezado__producto');
   
       tarjetaCanasteado.innerHTML = `<img src="productos/${prod['picture']}.jpg" alt="">
       <span>${prod['nombre']}</span><span> x${prod['cantidad']}</span>
       `;
-  
-    
-  
+      
+      //BOTON AGREGAR OTRO A CANASTO
+      let boton_agr = document.createElement('button');
+      boton_agr.classList.add('agregar_otro_al_canasto');
+      boton_agr.innerHTML = '+';
+      tarjetaCanasteado.appendChild(boton_agr);
+      boton_agr.addEventListener('click', () => {
+        let id = prod['id'];
+
+        
+        //AGREGA PRODUCTO AL CANASTO DESDE EL CANASTO
+        
+        let produ = DATABASE.catalogo[0].find(pr => {
+          return pr.id == id;
+        })
+
+        produ.AgregarAlCarrito(miCanasto, 1);
+        
+      })
+      
+      //BOTON ELIMINAR DE CANASTO
       let boton_del = document.createElement('button');
       boton_del.classList.add('eliminar_del_canasto');
       boton_del.innerHTML = 'X';
       tarjetaCanasteado.appendChild(boton_del);
-        boton_del.addEventListener('click', (e) => {
-          /*let id = e.target.parentNode.id;//uso el atributo id de html para almacenar id
-          id = id.slice(12);
-          id = parseInt(id, 10);*/
-          let id = prod['id'];
-          this.EliminarDeCanasta(id);
+      boton_del.addEventListener('click', () => {
+        let id = prod['id'];
+        this.EliminarDeCanasta(id);
         
-        })
+      })
   
       document.getElementsByClassName('encabezado__compra')[0].appendChild(tarjetaCanasteado);
     }
@@ -170,6 +184,12 @@ function RenderearCatalogo(productos){
       boton.classList.add('agregar_al_canasto');
       boton.innerHTML = 'Agregar a mi canasto';
       caja.appendChild(boton);
+      let comprado = document.createElement('span');
+      comprado.classList.add('agregado');
+      comprado.innerHTML = 'Se agregó al canasto!';
+      caja.appendChild(comprado);
+      $(".agregado").hide();
+
       boton.addEventListener('click', (e) => {
 
         let producto = productos.find(producto => {
@@ -178,9 +198,14 @@ function RenderearCatalogo(productos){
 
         producto.AgregarAlCarrito(miCanasto, 1);
 
-        let comprado = document.createElement('span')
-        comprado.innerHTML = 'Se agregó al canasto!'
-        caja.appendChild(comprado);
+        
+       
+        
+        $(".agregado").hide();
+        $(".agregado").slideDown(250);
+          
+        
+        
         
       })
 

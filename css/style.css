@@ -3,25 +3,61 @@ font-family: 'Patua One', cursive;
 font-family: 'Roboto', sans-serif;*/
 body {
   background-color: #fea680;
-  font-family: 'Patua One', cursive; }
+  font-family: 'Patua One', cursive;
+  margin: 0;
+  padding: 0; }
 
 .encabezado .encabezado__logo {
-  background-color: #01abaa; }
+  background-color: #01abaa;
+  display: flex;
+  justify-content: space-between;
+  margin: 0px;
+  padding: 10px; }
   .encabezado .encabezado__logo .encabezado__logo--canasto {
     background-image: url("../assets/canasto.png");
     background-size: cover;
     background-position: center;
+    display: inline-block;
     height: 45.42px;
+    margin: 10px 10px;
+    padding: 0px;
     width: 51px; }
   .encabezado .encabezado__logo .encabezado__logo--burbuja {
     background-color: #FEDC3D;
     border-radius: 9px;
-    text-align: center;
+    display: block;
+    font-weight: bold;
     height: 18px;
+    margin-left: 33px;
+    padding: 0px;
+    position: relative;
+    text-align: center;
     width: 18px; }
 
+.encabezado .encabezado__menu {
+  background-color: #FEDC3D;
+  font-size: 27px;
+  overflow-x: scroll;
+  /*empieza hide scrollbars*/
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+  /*termina hide scrollbars*/ }
+  .encabezado .encabezado__menu::-webkit-scrollbar {
+    /* hide scrollbar chrome safari*/
+    display: none; }
+  .encabezado .encabezado__menu ul.encabezado__menu--lista {
+    list-style-type: none;
+    overflow: hidden;
+    width: 800px; }
+    .encabezado .encabezado__menu ul.encabezado__menu--lista li {
+      display: inline-block;
+      margin-left: 27px; }
+
 .encabezado .encabezado__micanasto {
-  background-color: #FEDC3D; }
+  background-color: #FEDC3D;
+  margin-top: -20px; }
 
 .encabezado .encabezado__compra {
   border-top: #000000 5px solid;
@@ -36,6 +72,7 @@ body {
 
 h1 {
   color: #FDEAC6;
+  display: inline-block;
   font-family: 'Righteous', cursive;
   text-transform: uppercase; }
 

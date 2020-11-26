@@ -1,3 +1,6 @@
+var self;//**correccion para que metodo Canasta.LimpiaCanasto funcione ok (el addEventListener hacía que el this fuera el objeto html button) scope superior.
+var that; //correccion similar para que ajaxComplete pushee los productos en la propiedad catalogo del objeto DataBase
+
 class Producto{
   
     constructor(nombre, id, categoria, precio, stock, picture){
@@ -34,14 +37,26 @@ class Producto{
 }
 
 class DataBase {
+
+    constructor(){
+      that = this;
+      this.catalogo = [];
+    }
+
     getProducts(){
+      let productosObjeto= [];
         $.get("productos.json", function(data){
-          let productos = data.map(function(value){
+          productosObjeto = data.map(function(value){
             return new Producto(value.producto, value.id, value.categoria, value.precio, value.stock, value.picture);
           })
-        
-          RenderearCatalogo(productos);
+
         });
+      $(document).ajaxComplete(function(){
+        that.catalogo.push(productosObjeto);//uso that por que sino me toma como objeto lo que pasa el jquery en vez del objeto DataBase
+        RenderearCatalogo(productosObjeto);
+      })
+     
+
     }
 
     
