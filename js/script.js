@@ -186,7 +186,7 @@ function RenderearCatalogo(productos){
       caja.appendChild(boton);
       let comprado = document.createElement('span');
       comprado.classList.add('agregado');
-      comprado.innerHTML = 'Se agregó al canasto!';
+      
       caja.appendChild(comprado);
       $(".agregado").hide();
 
@@ -200,7 +200,7 @@ function RenderearCatalogo(productos){
 
         
        
-        
+        comprado.innerHTML = 'Se agregó al canasto!';
         $(".agregado").hide();
         $(".agregado").slideDown(250);
           
