@@ -36,7 +36,7 @@ class Canasta{
     this.PrecioTotal();
     this.CantidadProductos()
     this.PersistirCanasta();
-    this.RenderearCanasto(0);
+    this.RenderearCanasto();
   }
 
   LimpiaCanasto(){
@@ -44,7 +44,7 @@ class Canasta{
     self.compra = [];
     self.preciototal = 0;
     localStorage.removeItem('canasto');
-    self.RenderearCanasto(0);
+    self.RenderearCanasto();
   }
 
   PersistirCanasta(){
@@ -73,30 +73,30 @@ class Canasta{
     }
     this.PrecioTotal();
     this.CantidadProductos()
-    this.RenderearCanasto(0);
+    this.RenderearCanasto();
     this.PersistirCanasta();
 
   }
 
-  RecuperaCanasta(canastaLocal){
+  RecuperaCanasta(){
+    let canasta_local = localStorage.getItem('canasto');
     let prod;
-    let canastaLocalParseada = JSON.parse(canastaLocal);
-    this.preciototal = canastaLocalParseada.preciototal;
-    this.cantidad_productos = canastaLocalParseada.cantidad;
-    for(prod of canastaLocalParseada.compra){
-      this.compra.push(prod);
-      this.PersistirCanasta();
+    if (canasta_local != null && canasta_local != 'undefined'){
+      let canastaLocalParseada = JSON.parse(canasta_local);
+      this.preciototal = canastaLocalParseada.preciototal;
+      this.cantidad_productos = canastaLocalParseada.cantidad;
+      for(prod of canastaLocalParseada.compra){
+        this.compra.push(prod);
+        this.PersistirCanasta();
+      }
+
     }
-  
 
   }
 
-  RenderearCanasto(a){
+  RenderearCanasto(){
 
-    if(localStorage.getItem('canasto') && a){
-
-        this.RecuperaCanasta(localStorage.getItem('canasto'));
-    }
+  
     //limpia el html cada vez que se genera el canasto
     document.getElementsByClassName('encabezado__compra')[0].innerHTML = ``;
   
@@ -106,9 +106,27 @@ class Canasta{
       tarjetaCanasteado.classList.add('encabezado__producto');
   
       tarjetaCanasteado.innerHTML = `<img src="productos/${prod['picture']}.jpg" alt="">
-      <span>${prod['nombre']}</span><span> x${prod['cantidad']}</span>
+      <span>${prod['nombre']}</span>
       `;
       
+  
+      
+      //BOTON ELIMINAR DE CANASTO
+      let boton_del = document.createElement('button');
+      boton_del.classList.add('eliminar_del_canasto');
+      boton_del.innerHTML = '-';
+      tarjetaCanasteado.appendChild(boton_del);
+      boton_del.addEventListener('click', () => {
+        let id = prod['id'];
+        this.EliminarDeCanasta(id);
+        
+      })
+
+      //CANTIDAD EN CANASTO
+      let cantidad = document.createElement('span');
+      cantidad.innerHTML = ` x${prod['cantidad']}`;
+      tarjetaCanasteado.appendChild(cantidad);
+
       //BOTON AGREGAR OTRO A CANASTO
       let boton_agr = document.createElement('button');
       boton_agr.classList.add('agregar_otro_al_canasto');
@@ -127,17 +145,6 @@ class Canasta{
         produ.AgregarAlCarrito(miCanasto, 1);
         
       })
-      
-      //BOTON ELIMINAR DE CANASTO
-      let boton_del = document.createElement('button');
-      boton_del.classList.add('eliminar_del_canasto');
-      boton_del.innerHTML = 'X';
-      tarjetaCanasteado.appendChild(boton_del);
-      boton_del.addEventListener('click', () => {
-        let id = prod['id'];
-        this.EliminarDeCanasta(id);
-        
-      })
   
       document.getElementsByClassName('encabezado__compra')[0].appendChild(tarjetaCanasteado);
     }
@@ -151,13 +158,16 @@ class Canasta{
 
 
 let DATABASE = new DataBase;
-DATABASE.getProducts();
+
 var miCanasto = new Canasta(1);
 
-//RECUPERO LO QUE ESTE GUARDADO EN EL LOCALSTORAGE
 
+DATABASE.GetData();
 
-miCanasto.RenderearCanasto(1);
+//RECUPERO LO QUE ESTE GUARDADO EN EL LOCALSTORAGE y RENDEREO CANASTO
+
+miCanasto.RecuperaCanasta();
+miCanasto.RenderearCanasto();
 
 //GENERA PRODUCTOS DESTACADOS HTML
 function RenderearCatalogo(productos){
@@ -166,10 +176,44 @@ function RenderearCatalogo(productos){
       tarjetaProd.id = prod['id'];
       tarjetaProd.classList.add('producto');
 
+
+      let categoria_para_fa = '';
+      switch (prod.categoria[0]) {
+        case 'audio':
+          categoria_para_fa = 'fas fa-headphones';
+        break;
+
+        case 'cables':
+          categoria_para_fa = 'fab fa-usb';
+        break;
+
+        case 'cargadores':
+          categoria_para_fa = 'fas fa-bolt';
+        break;
+
+        case 'imagen':
+          categoria_para_fa = 'fas fa-camera-retro';
+        break;
+        
+        case 'memorias':
+          categoria_para_fa = 'fas fa-sd-card';
+        break;
+        
+        case 'redes':
+          categoria_para_fa = 'fas fa-wifi';
+        break;
+        
+      }
+
+     
+
       tarjetaProd.innerHTML = `<h4>${prod['nombre']}</h4>
-      <img src="productos/${prod['picture']}.jpg" alt="">
-      <div class="producto__categoria">
-          <span>${prod['categoria']}</span>
+      <div class="producto__picture">
+        <img src="productos/${prod['picture']}.jpg" alt="${prod['nombre']}">
+      </div>
+      <div class="producto__categoria tooltip">
+          <span class="icono ${categoria_para_fa}"></span>
+          <span class="tooltiptext">${prod.categoria[0]}</span>
       </div>
       <div class="producto__precio">
           <span>$${prod['precio']}</span>
@@ -182,12 +226,19 @@ function RenderearCatalogo(productos){
 
       let boton = document.createElement('button');
       boton.classList.add('agregar_al_canasto');
-      boton.innerHTML = 'Agregar a mi canasto';
-      caja.appendChild(boton);
-      let comprado = document.createElement('span');
-      comprado.classList.add('agregado');
+      //buscar si el producto esta en el canasto
+      let otro = miCanasto.compra.find(producto => {
+        return producto.id == prod.id;
+      })
+      if( otro != null && otro != 'undefined'){
+        boton.innerHTML = 'Agregar otro al canasto';
+      } else {
+        boton.innerHTML = 'Agregar al canasto';
+      }
+
       
-      caja.appendChild(comprado);
+      caja.appendChild(boton);
+      
       $(".agregado").hide();
 
       boton.addEventListener('click', (e) => {
@@ -199,10 +250,12 @@ function RenderearCatalogo(productos){
         producto.AgregarAlCarrito(miCanasto, 1);
 
         
-       
-        comprado.innerHTML = 'Se agregó al canasto!';
-        $(".agregado").hide();
-        $(".agregado").slideDown(250);
+        //comprado.innerHTML = 'Se agregó al canasto!';
+        
+        boton.innerHTML = 'Se agregó al canasto!';
+        setTimeout(() => boton.innerHTML = 'Agregar otro al canasto', 1400)
+    
+        
           
         
         
@@ -212,7 +265,19 @@ function RenderearCatalogo(productos){
       tarjetaProd.appendChild(caja);
 
 
-      document.getElementById('contenedor__productos').appendChild(tarjetaProd);
+      let categoria_estado_id = '';
+      switch(prod['categoria'][1]){
+        case 'destacados':
+          categoria_estado_id = 'productos__destacados';
+        break;
+        
+        case 'promociones':
+          categoria_estado_id = 'productos__promo';
+        break;
+
+      }
+
+      document.getElementById(categoria_estado_id).appendChild(tarjetaProd);
   }
 }
 

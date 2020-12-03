@@ -40,24 +40,23 @@ class DataBase {
 
     constructor(){
       that = this;
-      this.catalogo = [];
+      this.catalogo;
+      this.categorias;
     }
 
-    getProducts(){
-      let productosObjeto= [];
+    GetData(){
         $.get("productos.json", function(data){
-          productosObjeto = data.map(function(value){
+          that.catalogo = data[0]["catalogo"].map(function(value){
             return new Producto(value.producto, value.id, value.categoria, value.precio, value.stock, value.picture);
           })
 
+          that.categorias = data[0]["categorias"][0];
+          //that.RenderCatalogo();
+          RenderearCatalogo(that.catalogo);
+
+
         });
-      $(document).ajaxComplete(function(){
-        that.catalogo.push(productosObjeto);//uso that por que sino me toma como objeto lo que pasa el jquery en vez del objeto DataBase
-        RenderearCatalogo(productosObjeto);
-      })
-     
-
     }
-
+    
     
 }

@@ -1,8 +1,32 @@
 [{
+"categorias" : [{
+    "destacados" : "destacados",
+    "promociones" : "promociones",
+    "audio" : "audio",
+    "cargadores" : "cargadores",
+    "cables" : "cables",
+    "memorias" : "memorias",
+    "imagen" : "imagen",
+    "redes" : "redes"
+}],
+"catalogo" : [{
     "producto":"Parlante Bluetooth JBL Flip 4",
     "id": 1,
-    "categoria":"audio",
+    "categoria":["audio","destacados"],
+    "descripcion":"Parlante bluetooth estereo.",
+    "especificaciones":{
+        "marca":"JBL",
+        "modelo":"Flip 4",
+        "serie":"",
+        "tipo":"Parlante Bluetooth",
+        "origen": "China",
+        "largo": null,
+        "ancho": null
+
+    },
     "precio": 12000,
+    "precio_anterior":24000,
+    "keywords":["parlante","bluetooth","portatil","musica"],
     "stock": 20,
     "picture":"jbl-flip-5-00001"
 
@@ -10,8 +34,21 @@
 {
     "producto":"Cable HDMI Foxbox FlatHDMI",
     "id": 2,
-    "categoria":"cables",
+    "categoria":["cables","promociones"],
+    "descripcion":"Cable HDMI para televisores, computadoras y notebooks.",
+    "especificaciones":{
+        "marca":"Foxbox",
+        "modelo":"",
+        "serie":"",
+        "tipo":"HDMI",
+        "origen": "China",
+        "largo": "1 metro",
+        "ancho": null
+
+    },
     "precio": 260,
+    "precio_anterior":24000,
+    "keywords":["parlante","bluetooth","portatil","musica"],
     "stock": 20,
     "picture":"foxbox-flat-hdmi-00002"
 
@@ -19,8 +56,21 @@
 {
     "producto":"Cable USB C Foxbox Prism",
     "id": 3,
-    "categoria":"cables",
+    "categoria":["cables","destacados"],
+    "descripcion":"Cable HDMI para televisores, computadoras, notebooks",
+    "especificaciones":{
+        "marca":"Foxbox",
+        "modelo":"",
+        "serie":"",
+        "tipo":"HDMI",
+        "origen": "China",
+        "largo": "1 metro",
+        "ancho": null
+
+    },
     "precio": 700,
+    "precio_anterior":24000,
+    "keywords":["parlante","bluetooth","portatil","musica"],
     "stock": 20,
     "picture":"foxbox-cable-usb-c-00003"
 
@@ -28,8 +78,21 @@
 {
     "producto":"Auriculares Philips ActionFit SHQ2300",
     "id": 4,
-    "categoria":"audio",
+    "categoria":["audio","destacados"],
+    "descripcion":"Cable HDMI para televisores, computadoras, notebooks",
+    "especificaciones":{
+        "marca":"Foxbox",
+        "modelo":"",
+        "serie":"",
+        "tipo":"HDMI",
+        "origen": "China",
+        "largo": "1 metro",
+        "ancho": null
+
+    },
     "precio": 3500,
+    "precio_anterior":24000,
+    "keywords":["parlante","bluetooth","portatil","musica"],
     "stock": 20,
     "picture":"philips-auriculares-shq2300-00004"
 
@@ -37,8 +100,21 @@
 {
     "producto":"Cargador de pared Foxbox Volt",
     "id": 5,
-    "categoria":"cargadores",
+    "categoria":["cargadores","destacados"],
+    "descripcion":"Cable HDMI para televisores, computadoras, notebooks",
+    "especificaciones":{
+        "marca":"Foxbox",
+        "modelo":"",
+        "serie":"",
+        "tipo":"HDMI",
+        "origen": "China",
+        "largo": "1 metro",
+        "ancho": null
+
+    },
     "precio": 699,
+    "precio_anterior":24000,
+    "keywords":["parlante","bluetooth","portatil","musica"],
     "stock": 20,
     "picture":"foxbox-cargador-quickcharge-00005"
 
@@ -46,8 +122,22 @@
 {
     "producto":"Micro SD Sandisk Ultra 128gb",
     "id": 6,
-    "categoria":"memorias",
+    "categoria":["memorias","destacados"],
+    "descripcion":"Cable HDMI para televisores, computadoras, notebooks",
+    "especificaciones":{
+        "marca":"Foxbox",
+        "modelo":"",
+        "serie":"",
+        "tipo":"HDMI",
+        "origen": "China",
+        "largo": "1 metro",
+        "ancho": null
+
+    },
     "precio": 2500,
+    "precio_anterior":24000,
+    "keywords":["parlante","bluetooth","portatil","musica"],
     "stock": 20,
     "picture":"sandisk-memoria-ultra-128gb-00006"
+}]
 }]
