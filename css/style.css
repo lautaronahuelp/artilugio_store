@@ -68,12 +68,50 @@ body {
     body .encabezado .encabezado__micanasto {
       background-color: #FEDC3D;
       margin-top: -20px; }
-    body .encabezado .encabezado__compra {
-      border-top: #000000 5px solid;
-      border-bottom: #000000 5px solid; }
-    body .encabezado .encabezado__producto img {
-      height: 51px;
-      width: 82px; }
+      body .encabezado .encabezado__micanasto h2 {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 40px;
+        text-transform: uppercase;
+        width: 142px; }
+      body .encabezado .encabezado__micanasto .encabezado__compra {
+        border-top: #000000 5px solid;
+        border-bottom: #000000 5px solid; }
+        body .encabezado .encabezado__micanasto .encabezado__compra .encabezado__producto {
+          height: 55px;
+          margin: 15px auto;
+          position: relative;
+          width: 390px; }
+          body .encabezado .encabezado__micanasto .encabezado__compra .encabezado__producto img {
+            position: absolute;
+            height: 51px;
+            width: 82px;
+            border-radius: 5px; }
+          body .encabezado .encabezado__micanasto .encabezado__compra .encabezado__producto .eliminar_del_canasto {
+            position: absolute;
+            top: 24px;
+            left: 100px;
+            background-color: transparent;
+            border: none;
+            font-size: 25px;
+            height: 25px;
+            width: 25px; }
+          body .encabezado .encabezado__micanasto .encabezado__compra .encabezado__producto .agregar_otro_al_canasto {
+            position: absolute;
+            top: 24px;
+            left: 150px;
+            background-color: transparent;
+            border: none;
+            font-size: 25px;
+            height: 25px;
+            width: 25px; }
+          body .encabezado .encabezado__micanasto .encabezado__compra .encabezado__producto .cantidad_producto {
+            position: absolute;
+            top: 29px;
+            left: 135px; }
+          body .encabezado .encabezado__micanasto .encabezado__compra .encabezado__producto .nombre_producto {
+            position: relative;
+            left: 100px; }
     body .encabezado #mi_canasto {
       display: none; }
   body h1 {

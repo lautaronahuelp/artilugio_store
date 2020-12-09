@@ -83,20 +83,80 @@ body {
 	.encabezado__micanasto {
 		background-color: $amarillo;
 		margin-top: -20px;
-	}
-	.encabezado__compra {
-		border-top: $negro 5px solid;
-		border-bottom: $negro 5px solid;
-	}
-	.encabezado__producto {
-		img {
-			height: 51px;
-			width: 82px;
+
+		h2 {
+	
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 40px;
+			text-transform: uppercase;
+			width: 142px;
 		}
-    }
+
+		.encabezado__compra {
+			border-top: $negro 5px solid;
+			border-bottom: $negro 5px solid;
+			
+
+			.encabezado__producto {
+				height: 55px;
+				margin: 15px auto;
+				position:relative;
+				
+				width:390px;
+				
+				img {
+					position:absolute;
+					height: 51px;
+					width: 82px;
+					border-radius: 5px;
+				
+				}
+				
+				$topControlCant: 24px;
+				$leftControlCant: 100px;
+				
+				@mixin BontonControlCant {
+					background-color: transparent;
+					border:none;
+					font-size:25px;
+					height: 25px;
+					width: 25px;
+				}
+
+				.eliminar_del_canasto {
+					position: absolute;
+					top: $topControlCant;
+					left: $leftControlCant;
+					@include BontonControlCant;
+				}
+
+				.agregar_otro_al_canasto {
+					position: absolute;
+					top: $topControlCant;
+					left: $leftControlCant+50px;
+					@include BontonControlCant;
+				}
+
+				.cantidad_producto {
+					position: absolute;
+					top: $topControlCant+5px;
+					left: $leftControlCant+35px;
+				}
+
+				.nombre_producto {
+					position:relative;
+					left: 100px;
+				
+				}
+			}
+		}
+	}
+	
+	
     
     #mi_canasto {
-        display: none;
+		display: none;
     }
 }
 h1 {

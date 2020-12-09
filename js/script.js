@@ -106,7 +106,7 @@ class Canasta{
       tarjetaCanasteado.classList.add('encabezado__producto');
   
       tarjetaCanasteado.innerHTML = `<img src="productos/${prod['picture']}.jpg" alt="">
-      <span>${prod['nombre']}</span>
+      <span class="nombre_producto">${prod['nombre']}</span>
       `;
       
   
@@ -125,6 +125,7 @@ class Canasta{
 
       //CANTIDAD EN CANASTO
       let cantidad = document.createElement('span');
+      cantidad.classList.add('cantidad_producto')
       cantidad.innerHTML = ` x${prod['cantidad']}`;
       tarjetaCanasteado.appendChild(cantidad);
 
