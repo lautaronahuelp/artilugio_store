@@ -14,7 +14,7 @@
 <body>
     <header class="encabezado">
         <div class="encabezado encabezado__logo">
-            <h1 class="encabezado encabezado__logo encabezado__logo--logo">Artilugios Store</h1>
+            <h1 id="logo" class="encabezado encabezado__logo encabezado__logo--logo">Artilugios Store</h1>
 
             <div id="boton_canasto" class="encabezado encabezado__logo encabezado__logo--canasto">
                 <div class="encabezado encabezado__logo encabezado__logo--burbuja">
@@ -30,18 +30,11 @@
                 <button id="finaliza_compra">Finalizar compra</button>
             </div>
         </div>
-        <div class="encabezado encabezado__menu">
-           
-            <ul class="encabezado encabezado__menu encabezado__menu--lista">
-                <li>Audio</li>
-                <li>Cargadores</li>
-                <li>Cables</li>
-                <li>Memorias</li>
-                <li>Imagen</li>
-                <li>Redes</li>
-            </ul>
-        </div>
+        <div id="menu" class="encabezado encabezado__menu"></div>
     </header>
     <div class="container__principal"></div>
+    <div class="container__modal">
+        <div class="container__modal--modal" id="modal"></div>
+    </div>
 </body>
 </html>

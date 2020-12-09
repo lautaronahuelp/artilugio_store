@@ -114,7 +114,8 @@ class Canasta{
       //BOTON ELIMINAR DE CANASTO
       let boton_del = document.createElement('button');
       boton_del.classList.add('eliminar_del_canasto');
-      boton_del.innerHTML = '-';
+      boton_del.classList.add('fas');
+      boton_del.classList.add('fa-minus-square');
       tarjetaCanasteado.appendChild(boton_del);
       boton_del.addEventListener('click', () => {
         let id = prod['id'];
@@ -130,7 +131,8 @@ class Canasta{
       //BOTON AGREGAR OTRO A CANASTO
       let boton_agr = document.createElement('button');
       boton_agr.classList.add('agregar_otro_al_canasto');
-      boton_agr.innerHTML = '+';
+      boton_agr.classList.add('fas');
+      boton_agr.classList.add('fa-plus-square');
       tarjetaCanasteado.appendChild(boton_agr);
       boton_agr.addEventListener('click', () => {
         let id = prod['id'];
@@ -138,7 +140,7 @@ class Canasta{
         
         //AGREGA PRODUCTO AL CANASTO DESDE EL CANASTO
         
-        let produ = DATABASE.catalogo[0].find(pr => {
+        let produ = DATABASE.catalogo.find(pr => {
           return pr.id == id;
         })
 
@@ -161,19 +163,29 @@ let DATABASE = new DataBase;
 
 var miCanasto = new Canasta(1);
 
-
 DATABASE.GetData();
+miCanasto.RecuperaCanasta();
+Arranque();
+
+
 
 //RECUPERO LO QUE ESTE GUARDADO EN EL LOCALSTORAGE y RENDEREO CANASTO
-
-miCanasto.RecuperaCanasta();
-miCanasto.RenderearCanasto();
+function Arranque(){
+  //DATABASE.RenderMenu();
+  DATABASE.RenderCatalogo();
+  miCanasto.RenderearCanasto();
+}
 
 //FUNCION LIMPIA CANASTO QUE SE VA A CONVERTIR EN FINALIZAR COMPRA
 let boton_limpia = document.getElementById('finaliza_compra');
 boton_limpia.addEventListener('click', miCanasto.LimpiaCanasto);
 
+
 //Interacciones y efectos con JQUERY
 $("#boton_canasto").click(function(){
   $("#mi_canasto").fadeToggle();
+});
+
+$("#logo").click(function(){
+  Arranque();
 });
