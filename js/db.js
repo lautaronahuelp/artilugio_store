@@ -109,7 +109,6 @@ class DataBase {
 
       //Limpia Pantalla
       document.getElementsByClassName('container__principal')[0].innerHTML = "";
-      
       if(categoria != undefined){
         Object.defineProperty(cat, categoria,{enumerable: true, writable: true});
         cat[categoria] = categoria;
@@ -255,13 +254,22 @@ class DataBase {
 
 
             })
-          
+            
+
+
             tarjetaProd.appendChild(caja);      
             contenedor_cat.appendChild(tarjetaProd);
-      }}
 
+            
+          }
+          
+        }
 
-
+        //GRADIENTE
+        let gradiente = document.createElement('div');
+        gradiente.classList.add('gradiente');
+        section.appendChild(gradiente);
+        
 
 
         //agrego al body la cosa
@@ -275,9 +283,7 @@ class DataBase {
       lista_menu.classList.add('encabezado');
       lista_menu.classList.add('encabezado__menu');
       lista_menu.classList.add('encabezado__menu--lista');
-      console.log(this.categorias)
       for(let ct in that.categorias){
-        console.log(ct)
         let item_menu = document.createElement('li');
         item_menu.innerHTML = ct;
         lista_menu.appendChild(item_menu);
@@ -290,6 +296,13 @@ class DataBase {
 
       let div_menu = document.getElementById('menu');
       div_menu.appendChild(lista_menu);
+
+      let encabezado = document.getElementsByClassName('encabezado')[0];
+
+      //GRADIENTE
+      let gradiente = document.createElement('div');
+      gradiente.classList.add('gradiente');
+      encabezado.appendChild(gradiente);
     }
         
 }

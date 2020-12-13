@@ -17,13 +17,9 @@
     "especificaciones":{
         "marca":"JBL",
         "modelo":"Flip 4",
-        "serie":"",
+        "potencia": "8 W",
         "tipo":"Parlante Bluetooth",
-        "origen": "China",
-        "largo": null,
-        "ancho": null,
-        "peso": null
-
+        "origen": "China"
     },
     "precio": 12000,
     "precio_anterior":24000,
@@ -39,17 +35,15 @@
     "descripcion":"Cable HDMI para televisores, computadoras y notebooks.",
     "especificaciones":{
         "marca":"Foxbox",
-        "modelo":"",
-        "serie":"",
+        "modelo":"FlatHDMI",
         "tipo":"HDMI",
         "origen": "China",
-        "largo": "1 metro",
-        "ancho": null
+        "largo": "1 metro"
 
     },
     "precio": 260,
-    "precio_anterior":24000,
-    "keywords":["parlante","bluetooth","portatil","musica"],
+    "precio_anterior": 520,
+    "keywords":["cables","auriculares","video","audio"],
     "stock": 20,
     "picture":"foxbox-flat-hdmi-00002"
 
@@ -58,20 +52,19 @@
     "producto":"Cable USB C Foxbox Prism",
     "id": 3,
     "categoria":["cables","destacados"],
-    "descripcion":"Cable HDMI para televisores, computadoras, notebooks",
+    "descripcion":"Cable de datos y carga para celulares y tables.",
     "especificaciones":{
         "marca":"Foxbox",
-        "modelo":"",
-        "serie":"",
-        "tipo":"HDMI",
+        "modelo":"Prism",
+        "tipo":"USB C",
         "origen": "China",
         "largo": "1 metro",
-        "ancho": null
+        "amperaje": "2.4 A"
 
     },
     "precio": 700,
-    "precio_anterior":24000,
-    "keywords":["parlante","bluetooth","portatil","musica"],
+    "precio_anterior":1400,
+    "keywords":["usb","datos", "carga"],
     "stock": 20,
     "picture":"foxbox-cable-usb-c-00003"
 
@@ -80,20 +73,18 @@
     "producto":"Auriculares Philips ActionFit SHQ2300",
     "id": 4,
     "categoria":["audio","destacados"],
-    "descripcion":"Cable HDMI para televisores, computadoras, notebooks",
+    "descripcion":"Auriculares deportivos resistentes a la humedad.",
     "especificaciones":{
-        "marca":"Foxbox",
-        "modelo":"",
-        "serie":"",
-        "tipo":"HDMI",
+        "marca":"Philips",
+        "modelo":"ActionFit SHQ2300",
+        "conexion":"Jack Plug 3.5mm",
         "origen": "China",
-        "largo": "1 metro",
-        "ancho": null
+        "largo": "1,5 Mts"
 
     },
     "precio": 3500,
-    "precio_anterior":24000,
-    "keywords":["parlante","bluetooth","portatil","musica"],
+    "precio_anterior":7000,
+    "keywords":["auricular","cableado"],
     "stock": 20,
     "picture":"philips-auriculares-shq2300-00004"
 
@@ -102,20 +93,19 @@
     "producto":"Cargador de pared Foxbox Volt",
     "id": 5,
     "categoria":["cargadores","destacados"],
-    "descripcion":"Cable HDMI para televisores, computadoras, notebooks",
+    "descripcion":"Cargador Quickcharge de pared.",
     "especificaciones":{
         "marca":"Foxbox",
-        "modelo":"",
-        "serie":"",
-        "tipo":"HDMI",
-        "origen": "China",
-        "largo": "1 metro",
-        "ancho": null
+        "modelo":"Volt",
+        "quickcharge":"si",
+        "amperaje max.":"3,1 A",
+        "salida":"USB",
+        "origen": "China"
 
     },
     "precio": 699,
-    "precio_anterior":24000,
-    "keywords":["parlante","bluetooth","portatil","musica"],
+    "precio_anterior":1400,
+    "keywords":["quickcharge"],
     "stock": 20,
     "picture":"foxbox-cargador-quickcharge-00005"
 
@@ -124,21 +114,82 @@
     "producto":"Micro SD Sandisk Ultra 128gb",
     "id": 6,
     "categoria":["memorias","destacados"],
-    "descripcion":"Cable HDMI para televisores, computadoras, notebooks",
+    "descripcion":"Memoria Micro SD para celulares, camaras y tablets.",
     "especificaciones":{
-        "marca":"Foxbox",
-        "modelo":"",
-        "serie":"",
-        "tipo":"HDMI",
-        "origen": "China",
-        "largo": "1 metro",
-        "ancho": null
+        "marca":"Sandisk",
+        "modelo":"Ultra",
+        "tipo":"MicroSD",
+        "capacidad":"128Gb",
+        "origen": "China"
 
     },
     "precio": 2500,
-    "precio_anterior":24000,
-    "keywords":["parlante","bluetooth","portatil","musica"],
+    "precio_anterior":5000,
+    "keywords":["celulares"],
     "stock": 20,
     "picture":"sandisk-memoria-ultra-128gb-00006"
+},
+{
+    "producto":"Repetidor y router TP-LINK TL-WR820N",
+    "id": 7,
+    "categoria":["redes","destacados"],
+    "descripcion":"Aumente su señal WI-FI en toda la casa. Router y repetidor TP-LINK TL-WR820N.",
+    "especificaciones":{
+        "marca":"TP-LINK",
+        "modelo":"TL-WR820N",
+        "tipo":"Wi-Fi",
+        "velocidad":"300Mbps",
+        "origen": "China"
+
+    },
+    "precio": 1595,
+    "precio_anterior":3000,
+    "keywords":["wifi","router","repetidor","aumentar","señal"],
+    "stock": 20,
+    "picture":"tplink-router-wifi-tl-wr820n-00007"
+},
+{
+    "producto":"Cable Micro USB Verbatim Sync&Charge",
+    "id": 8,
+    "categoria":["cables","destacados"],
+    "descripcion":"Cable de datos y carga para celulares y tables.",
+    "especificaciones":{
+        "marca":"Verbatim",
+        "modelo":"Sync&Charge",
+        "tipo":"Micro USB",
+        "origen": "China",
+        "largo": "30cm",
+        "proteccion":"PVC",
+        "amperaje": "2.4 A"
+
+    },
+    "precio": 650,
+    "precio_anterior":1100,
+    "keywords":["usb","datos", "carga"],
+    "stock": 20,
+    "picture":"verbatim-micro-usb-cable-sync-charge-30-cm-00008"
+
+},
+{
+    "producto":"GoPro Hero 7",
+    "id": 9,
+    "categoria":["imagen","destacados"],
+    "descripcion":"Cámara deportiva resistente al agua GoPro.",
+    "especificaciones":{
+        "marca":"GoPro",
+        "modelo":"Hero 7",
+        "tipo":"Deportiva",
+        "origen": "China",
+        "peso": "74gr",
+        "resistencia al agua":"si",
+        "memoria": "MicroSD"
+
+    },
+    "precio": 30299,
+    "precio_anterior":40000,
+    "keywords":["deportiva","resistente al agua", "camara"],
+    "stock": 20,
+    "picture":"gopro-hero-7-00009"
+
 }]
 }]
