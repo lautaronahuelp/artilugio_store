@@ -188,7 +188,7 @@ class DataBase {
 
             let pic_producto = document.createElement('div');
             pic_producto.classList.add('producto__picture');
-            pic_producto.innerHTML = `<img src="productos/${prod.picture}.jpg" alt="${prod.nombre}">}`;
+            pic_producto.innerHTML = `<img src="productos/${prod.picture}.jpg" alt="${prod.nombre}">`;
             tarjetaProd.appendChild(pic_producto);
 
             let cat_producto = document.createElement('div');
