@@ -36,6 +36,9 @@ class Producto{
       let container_modal = document.getElementsByClassName('container__modal')[0];
       container_modal.style.display = 'block';
 
+      let body = document.getElementsByTagName('body')[0];
+      body.style.overflow = 'hidden';
+
       modal.style.display = 'block';
       modal.innerHTML =  `<h1>${prod.nombre}</h1>
       <div class="producto__picture">
@@ -48,7 +51,7 @@ class Producto{
       mod_cerrar.classList.add('fa-times-circle');
       mod_cerrar.addEventListener('click', ()=>{
         modal.innerHTML = ``;
-        
+        body.style.overflow = 'scroll';
         container_modal.style.display = 'none';
       })
       modal.appendChild(mod_cerrar);
