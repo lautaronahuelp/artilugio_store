@@ -307,13 +307,15 @@ class DataBase {
       lista_menu.classList.add('encabezado__menu');
       lista_menu.classList.add('encabezado__menu--lista');
       for(let ct in that.categorias){
-        let item_menu = document.createElement('li');
-        item_menu.innerHTML = ct;
-        lista_menu.appendChild(item_menu);
+        if(ct != 'destacados' && ct != 'promociones'){
+          let item_menu = document.createElement('li');
+          item_menu.innerHTML = ct;
+          lista_menu.appendChild(item_menu);
 
-        item_menu.addEventListener('click', ()=>{
-          that.RenderCatalogo(ct);
-        })
+          item_menu.addEventListener('click', ()=>{
+            that.RenderCatalogo(ct);
+          })
+        }
 
       }
 
