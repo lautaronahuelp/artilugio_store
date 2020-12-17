@@ -271,12 +271,12 @@ h1 {
 		right:200px;
 	}
 	.producto__precio--promo {
+		color: $hueso;
 		font-size: 37px;
 		z-index: 2;
 	}
-
+	
 	.producto__precioanterior {
-		color: $hueso;
 		font-size: 20px;
 		position: absolute;
 		text-decoration: line-through;

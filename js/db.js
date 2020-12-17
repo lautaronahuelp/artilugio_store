@@ -216,7 +216,7 @@ class DataBase {
             let pre_producto = document.createElement('div');
             pre_producto.classList.add('producto__precio');
             pre_producto.innerHTML = `<span>$${prod['precio']}</span>`;
-            tarjetaProd.appendChild(pre_producto);
+            
 
             if(ct == 'promociones'){
               let pre_anterior = document.createElement('div');
@@ -225,6 +225,8 @@ class DataBase {
               pre_anterior.innerHTML = `<span>$${prod['precio_ant']}</span>`;
               tarjetaProd.appendChild(pre_anterior);
             }
+
+            tarjetaProd.appendChild(pre_producto);
 
             tit_producto.addEventListener('click', ()=>{
               prod.MasInformacion(prod);
