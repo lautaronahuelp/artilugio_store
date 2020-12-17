@@ -32,15 +32,16 @@ class Producto{
     MasInformacion(prod){
       console.log(prod);
       let modal = document.getElementById('modal');
+
       let container_modal = document.getElementsByClassName('container__modal')[0];
       container_modal.style.display = 'block';
+
       modal.style.display = 'block';
-      //modal.innerHTML = `<span>${JSON.stringify(prod)}</span>`;
-      modal.innerHTML =  `<h4>${prod.nombre}</h4>
+      modal.innerHTML =  `<h1>${prod.nombre}</h1>
       <div class="producto__picture">
       <img src="productos/${prod.picture}.jpg" alt="${prod.nombre}" />
       </div>
-      <p>${prod.descripcion}</p>`;
+      `;
       
       let mod_cerrar = document.createElement('button');
       mod_cerrar.classList.add('fas');
@@ -50,23 +51,34 @@ class Producto{
         
         container_modal.style.display = 'none';
       })
-
       modal.appendChild(mod_cerrar);
+      
+      let mod_info_prod = document.createElement('div');
+      mod_info_prod.classList.add('producto__info');
 
-      let mod_specs = document.createElement('table');
+      let mod_descr = document.createElement('div');
+      mod_descr.innerHTML = `<h2>Descripción</h2>
+      <p>${prod.descripcion}</p>`;
+      mod_info_prod.appendChild(mod_descr);
+
+      let mod_specs = document.createElement('div');
+      mod_specs.innerHTML = `<h2>Especificaciones</h2>`;
+      let tb_specs = document.createElement('table');
       for (let sp in prod.especificaciones){
         if (prod.especificaciones[sp] != null && prod.especificaciones[sp] != ''){
           let tr_specs = document.createElement('tr');
           let td_specs_name = document.createElement('td');
-          td_specs_name.innerHTML = sp;
+          td_specs_name.innerHTML = `${sp}:`;
           tr_specs.appendChild(td_specs_name);
           let td_specs_value = document.createElement('td');
           td_specs_value.innerHTML = prod.especificaciones[sp];
           tr_specs.appendChild(td_specs_value);
-          mod_specs.appendChild(tr_specs);
-          modal.appendChild(mod_specs);
+          tb_specs.appendChild(tr_specs);
+          mod_specs.appendChild(tb_specs);
         }
       }
+      mod_info_prod.appendChild(mod_specs);
+      modal.appendChild(mod_info_prod);
     }
     
     ComprobarStock(cantidad){
