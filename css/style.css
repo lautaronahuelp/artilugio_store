@@ -198,6 +198,16 @@ body {
       position: absolute;
       top: 290px;
       right: 200px; }
+    body .producto .producto__precio--promo {
+      font-size: 37px;
+      z-index: 2; }
+    body .producto .producto__precioanterior {
+      color: #FDEAC6;
+      font-size: 20px;
+      position: absolute;
+      text-decoration: line-through;
+      top: 280px;
+      right: 190px; }
   body .seccion__productos {
     display: block;
     margin: 86px auto;

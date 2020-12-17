@@ -270,6 +270,19 @@ h1 {
 		top:290px;
 		right:200px;
 	}
+	.producto__precio--promo {
+		font-size: 37px;
+		z-index: 2;
+	}
+
+	.producto__precioanterior {
+		color: $hueso;
+		font-size: 20px;
+		position: absolute;
+		text-decoration: line-through;
+		top:280px;
+		right:190px;
+	}
 
 	
 }

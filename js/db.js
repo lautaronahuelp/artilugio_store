@@ -218,6 +218,14 @@ class DataBase {
             pre_producto.innerHTML = `<span>$${prod['precio']}</span>`;
             tarjetaProd.appendChild(pre_producto);
 
+            if(ct == 'promociones'){
+              let pre_anterior = document.createElement('div');
+              pre_anterior.classList.add('producto__precioanterior');
+              pre_producto.classList.add('producto__precio--promo');
+              pre_anterior.innerHTML = `<span>$${prod['precio_ant']}</span>`;
+              tarjetaProd.appendChild(pre_anterior);
+            }
+
             tit_producto.addEventListener('click', ()=>{
               prod.MasInformacion(prod);
             })
