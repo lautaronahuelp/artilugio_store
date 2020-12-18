@@ -304,7 +304,12 @@ class DataBase {
     }
 
     RenderMenu(){
+
+      let div_lista_menu = document.createElement('div');
+      div_lista_menu.id = 'menu_div';
+
       let lista_menu = document.createElement('ul');
+      lista_menu.id = 'menu_lis';
       lista_menu.classList.add('encabezado');
       lista_menu.classList.add('encabezado__menu');
       lista_menu.classList.add('encabezado__menu--lista');
@@ -322,14 +327,30 @@ class DataBase {
       }
 
       let div_menu = document.getElementById('menu');
-      div_menu.appendChild(lista_menu);
+      div_lista_menu.appendChild(lista_menu);
+      div_menu.appendChild(div_lista_menu);
 
-      let encabezado = document.getElementsByClassName('encabezado')[0];
 
-      //GRADIENTE
-      let gradiente = document.createElement('div');
-      gradiente.classList.add('gradiente');
-      encabezado.appendChild(gradiente);
+      //GRADIENTES
+      let gradiente_r = document.createElement('div');
+      
+      gradiente_r.classList.add('gradiente');
+      gradiente_r.classList.add('gradiente__r');
+      div_menu.appendChild(gradiente_r);
+      let flecha_r = document.createElement('div');
+      flecha_r.classList.add('fas');
+      flecha_r.classList.add('fa-angle-right');
+      gradiente_r.appendChild(flecha_r);
+
+      let gradiente_l = document.createElement('div');
+  
+      gradiente_l.classList.add('gradiente');
+      gradiente_l.classList.add('gradiente__l');
+      div_menu.appendChild(gradiente_l);
+      let flecha_l = document.createElement('div');
+      flecha_l.classList.add('fas');
+      flecha_l.classList.add('fa-angle-left');
+      gradiente_l.appendChild(flecha_l);
     }
         
 }

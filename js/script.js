@@ -175,6 +175,8 @@ function Arranque(){
   //DATABASE.RenderMenu();
   DATABASE.RenderCatalogo();
   miCanasto.RenderearCanasto();
+  
+
 }
 
 //FUNCION LIMPIA CANASTO QUE SE VA A CONVERTIR EN FINALIZAR COMPRA
@@ -184,9 +186,48 @@ boton_limpia.addEventListener('click', miCanasto.LimpiaCanasto);
 
 //Interacciones y efectos con JQUERY
 $("#boton_canasto").click(function(){
-  $("#mi_canasto").fadeToggle();
+  $("#mi_canasto").slideToggle();
 });
 
 $("#logo").click(function(){
   Arranque();
 });
+
+$(document).ajaxComplete(function() {
+  let elemento = $('#menu_div')[0];
+  let gradiente__l = $("#menu_div ~ .gradiente__l");
+  gradiente__l.fadeOut();
+  let gradiente__r = $("#menu_div ~ .gradiente__r");
+  
+
+  if(((elemento.scrollWidth - elemento.clientWidth) - elemento.scrollLeft) < 2){
+    gradiente__r.fadeOut();
+  }
+
+  $('#menu_div').scroll(function() {
+    
+    if (((elemento.scrollWidth - elemento.clientWidth) - elemento.scrollLeft < 2)){
+      gradiente__r.fadeOut();
+    } else {
+      gradiente__r.fadeIn();
+    }
+    
+    if ($(this).scrollLeft() != 0){
+      gradiente__l.fadeIn();
+    } else {
+      gradiente__l.fadeOut();
+    }
+  })
+
+  gradiente__r.click(function() {
+    
+    elemento.scroll(elemento.scrollLeft + elemento.clientWidth,0);
+  })
+
+  gradiente__l.click(function() {
+
+    elemento.scroll( elemento.scrollLeft - elemento.clientWidth,0);
+  })
+  
+
+})
