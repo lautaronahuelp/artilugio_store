@@ -248,6 +248,7 @@ body {
     body .seccion__productos .gradiente {
       background: #fea680;
       background: linear-gradient(90deg, rgba(254, 166, 128, 0) 80%, #fea680 100%);
+      font-size: 50px;
       height: 375px;
       overflow: hidden;
       margin: 0 auto;
@@ -265,11 +266,24 @@ body {
       /* Firefox */ }
       body .seccion__productos .gradiente::-webkit-scrollbar {
         display: none; }
+      body .seccion__productos .gradiente.gradiente__l {
+        background: #fea680;
+        background: linear-gradient(270deg, rgba(254, 166, 128, 0) 80%, #fea680 100%);
+        left: 1vw;
+        right: auto; }
+      body .seccion__productos .gradiente .fas {
+        color: rgba(0, 0, 0, 0.7);
+        pointer-events: auto;
+        position: absolute;
+        top: 155px; }
+      body .seccion__productos .gradiente .fa-angle-right {
+        right: 0px; }
     body .seccion__productos .frame {
       height: 375px;
       overflow: hidden;
       overflow-x: scroll;
       margin: 0 auto;
+      scroll-behavior: smooth;
       width: 400px;
       /* Hide scrollbar for Chrome, Safari and Opera */
       /* Hide scrollbar for IE, Edge and Firefox */

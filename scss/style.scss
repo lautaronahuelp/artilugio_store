@@ -349,6 +349,7 @@ h1 {
 		//background: linear-gradient(90deg, rgba(255,255,255,0) 80%, rgba(255,255,255,1) 100%);
 		background: rgb(254,166,128);
 		background: linear-gradient(90deg, rgba(254,166,128,0) 80%, rgba(254,166,128,1) 100%);
+		font-size: 50px;
 		height: 375px;
 		overflow: hidden;
 		margin: 0 auto;
@@ -366,6 +367,27 @@ h1 {
 		 /* Hide scrollbar for IE, Edge and Firefox */
 		-ms-overflow-style: none;  /* IE and Edge */
 		scrollbar-width: none;  /* Firefox */
+
+		&.gradiente__l {
+			background: rgb(254,166,128);
+			background: linear-gradient(270deg, rgba(254,166,128,0) 80%, rgba(254,166,128,1) 100%);
+			left: 1vw;
+			right: auto;
+			
+			
+		}
+
+		.fas {
+			color: rgba(0,0,0,0.7);
+			pointer-events: auto;
+			position:absolute;
+			top:155px;
+
+		}
+
+		.fa-angle-right{
+			right:0px;
+		}
 	}
 
 	.frame {
@@ -374,7 +396,7 @@ h1 {
 		overflow: hidden;
 		overflow-x: scroll;
 		margin: 0 auto;
-
+		scroll-behavior: smooth;
 		width: 400px;
 
 		/* Hide scrollbar for Chrome, Safari and Opera */
