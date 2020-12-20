@@ -22,7 +22,7 @@ class Producto{
       var compra = {id: this.id, nombre: this.nombre, precio: this.precio, cantidad: cantidad, categoria: this.categoria, picture: this.picture};
       
       if(this.ComprobarStock(cantidad)){
-        carrito.RecibeCarrito(compra);
+        carrito.RecibeCanasto(compra);
         console.log('se agregó al carrito');
       } else{
         console.log('no hay stock');

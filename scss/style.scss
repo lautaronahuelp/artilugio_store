@@ -213,6 +213,37 @@ body {
 				}
 			}
 		}
+		
+		
+	}
+
+	.encabezado__micanasto--finalizar {
+		margin: 5px auto;
+		text-align: center;
+		width: 200px;
+
+		.encabezado__micanasto--preciototal {
+			font-size: 25px;
+		}
+
+		#boton_finalizar_compra {
+			background-color: $amarillo;
+			border: 2px solid $negro;
+			border-radius: 5px;
+			font-family: 'Patua One', cursive;
+			font-size: 20px;
+			text-transform: uppercase;
+			transition: all 0.5s;
+			
+			
+
+			&:hover{
+				color: $amarillo;
+				background-color: $negro;
+				
+				
+			}
+		}
 	}
 	
 	

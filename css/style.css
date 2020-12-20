@@ -158,6 +158,23 @@ body {
           body .encabezado .encabezado__micanasto .encabezado__compra .encabezado__producto .nombre_producto {
             position: relative;
             left: 100px; }
+    body .encabezado .encabezado__micanasto--finalizar {
+      margin: 5px auto;
+      text-align: center;
+      width: 200px; }
+      body .encabezado .encabezado__micanasto--finalizar .encabezado__micanasto--preciototal {
+        font-size: 25px; }
+      body .encabezado .encabezado__micanasto--finalizar #boton_finalizar_compra {
+        background-color: #FEDC3D;
+        border: 2px solid #000000;
+        border-radius: 5px;
+        font-family: 'Patua One', cursive;
+        font-size: 20px;
+        text-transform: uppercase;
+        transition: all 0.5s; }
+        body .encabezado .encabezado__micanasto--finalizar #boton_finalizar_compra:hover {
+          color: #FEDC3D;
+          background-color: #000000; }
     body .encabezado #mi_canasto {
       display: none; }
   body h1 {

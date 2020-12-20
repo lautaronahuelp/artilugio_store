@@ -61,7 +61,7 @@ class Canasta{
     this.preciototal = precio_total_met;
   }
 
-  RecibeCarrito(compra) {
+  RecibeCanasto(compra) {
     
     
     if (typeof this.compra.find(producto => producto.id == compra.id) !== 'undefined'){
@@ -99,6 +99,8 @@ class Canasta{
   
     //limpia el html cada vez que se genera el canasto
     document.getElementsByClassName('encabezado__compra')[0].innerHTML = ``;
+    let formu = document.getElementById('form_finaliza_compra');
+    formu.innerHTML = ``;
   
     for (let prod of this.compra) {
       let tarjetaCanasteado = document.createElement('div');
@@ -148,12 +150,33 @@ class Canasta{
         produ.AgregarAlCarrito(miCanasto, 1);
         
       })
+
+      //AGREGAR A FORMULARIO FINALIZAR
+      
+      
+      let prod_para_form = document.createElement('input');
+      prod_para_form.setAttribute('type', 'hidden');
+      prod_para_form.setAttribute('name', 'producto-'+prod.id);
+
+      let json_prod = `{"title":"${prod.nombre}","picture_url":"http://octaedro.000webhostapp.com/artilugio/productos/${prod.picture}.jpg","quantity":"${prod.cantidad}","unit_price":"${(prod.precio)/(prod.cantidad)}"}`;
+      prod_para_form.setAttribute('value', json_prod);
+      
+      formu.appendChild(prod_para_form);
+      
+
+
   
       document.getElementsByClassName('encabezado__compra')[0].appendChild(tarjetaCanasteado);
     }
+    //BOTON FINALIZAR COMPRA
+    let boton_finalizar = document.createElement('input');
+      boton_finalizar.setAttribute('type', 'submit');
+      boton_finalizar.setAttribute('value', 'Finalizar compra');
+      boton_finalizar.setAttribute('id', 'boton_finalizar_compra');
+      formu.appendChild(boton_finalizar);
     
     document.getElementsByClassName('encabezado__logo--burbuja')[0].innerHTML = this.CantidadProductos();
-    document.getElementsByClassName('encabezado__micanasto--preciototal')[0].innerHTML = '$' + this.preciototal;
+    document.getElementsByClassName('encabezado__micanasto--preciototal')[0].innerHTML = 'TOTAL: $' + this.preciototal;
     
   }
   
@@ -180,8 +203,8 @@ function Arranque(){
 }
 
 //FUNCION LIMPIA CANASTO QUE SE VA A CONVERTIR EN FINALIZAR COMPRA
-let boton_limpia = document.getElementById('finaliza_compra');
-boton_limpia.addEventListener('click', miCanasto.LimpiaCanasto);
+//let boton_limpia = document.getElementById('finaliza_compra');
+//boton_limpia.addEventListener('click', miCanasto.LimpiaCanasto);
 
 
 //Interacciones y efectos con JQUERY
