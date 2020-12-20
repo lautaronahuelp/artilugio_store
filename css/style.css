@@ -412,6 +412,8 @@ body {
     width: 90vw; }
   body .seccion__productos .gradiente {
     right: 4vw; }
+    body .seccion__productos .gradiente.gradiente__l {
+      left: 4vw; }
   body .container__modal .container__modal--modal {
     margin-top: 1vh;
     height: 640px; }

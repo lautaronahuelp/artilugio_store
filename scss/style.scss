@@ -600,7 +600,12 @@ h1 {
 			}
 			.gradiente{
 				right:4vw;
+
+				&.gradiente__l {
+					left:4vw;
+				}
 			}
+
 		}
 
 		.container__modal {
