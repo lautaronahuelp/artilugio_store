@@ -173,7 +173,16 @@ class Canasta{
       boton_finalizar.setAttribute('type', 'submit');
       boton_finalizar.setAttribute('value', 'Finalizar compra');
       boton_finalizar.setAttribute('id', 'boton_finalizar_compra');
+
+      boton_finalizar.addEventListener('click', function(event) {
+        event.preventDefault();
+         miCanasto.LimpiaCanasto();
+       });
+
       formu.appendChild(boton_finalizar);
+
+      
+
     
     document.getElementsByClassName('encabezado__logo--burbuja')[0].innerHTML = this.CantidadProductos();
     document.getElementsByClassName('encabezado__micanasto--preciototal')[0].innerHTML = 'TOTAL: $' + this.preciototal;
@@ -202,9 +211,6 @@ function Arranque(){
 
 }
 
-//FUNCION LIMPIA CANASTO QUE SE VA A CONVERTIR EN FINALIZAR COMPRA
-//let boton_limpia = document.getElementById('finaliza_compra');
-//boton_limpia.addEventListener('click', miCanasto.LimpiaCanasto);
 
 
 //Interacciones y efectos con JQUERY
@@ -260,9 +266,7 @@ $(document).ajaxComplete(function() {
 function ActivaScroll(){
   //SCROLL CATÁLOGO
   let categorias_scroll = $('#container__principal').children();
-  console.log(categorias_scroll);
   for (i = 0; i<categorias_scroll.length; i++){
-    console.log(categorias_scroll[i].id);
   let stringito = `${categorias_scroll[i].id} .frame`;
   let elementod = $('#'+ stringito)[0];
   let gradiente__ld = $('#'+stringito+' ~ .gradiente__l');

@@ -23,14 +23,12 @@ class Producto{
       
       if(this.ComprobarStock(cantidad)){
         carrito.RecibeCanasto(compra);
-        console.log('se agregó al carrito');
       } else{
-        console.log('no hay stock');
+        alert('no hay stock');
       }
     }
 
     MasInformacion(prod){
-      console.log(prod);
       let modal = document.getElementById('modal');
 
       let container_modal = document.getElementsByClassName('container__modal')[0];
